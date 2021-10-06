@@ -12,7 +12,15 @@ const App = () => {
     const[section, setSection] = useState([]);
     const[isLoading, setIsLoading] = useState(true);
     const[isError, setIsError]=  useState(false)
-    
+    const filterBtn = (value)=>{
+        if(value==="TOMMY"){
+            setSection(section)
+        }
+setSection(section.filter((values)=>{
+    return values.company === value;
+
+}))
+}
 
     //lets fetch data and useEffect hook
     const fetchData = ()=>{
@@ -58,7 +66,7 @@ const fnlBtn =  Array.from(allBtns);
     return (
         <div>
             <h1> Experience</h1>
-            <Buttons fnlBtn={fnlBtn} />
+            <Buttons fnlBtn={fnlBtn} filterBtn={filterBtn}/>
           <Main section={section}/>
         </div>
     )
