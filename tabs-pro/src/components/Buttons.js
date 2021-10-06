@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Buttons = ({data}) => {
+const Buttons = ({data, setDis}) => {
     return (
         <div>
-          {data.map((value)=>{
-              return <button> {value.company} </button>
+          {data.map((value, index)=>{
+              return <button onClick={()=>setDis(index)}> {value.company} </button>
 
           })}  
         </div>
