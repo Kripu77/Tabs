@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import Buttons from './components/Buttons';
 import Error from './components/Error';
 import Loading from './components/Loading';
 import Main from './components/Main';
 const url = "https://course-api.com/react-tabs-project";
+
+//to fetch the button title as per the company
+
+
 const App = () => {
     const[section, setSection] = useState([]);
     const[isLoading, setIsLoading] = useState(true);
@@ -29,11 +34,21 @@ const App = () => {
             setSection(data);
         })
     }
+  
 
     useEffect(()=>{
       fetchData();    },[])
-    
-    
+
+
+     
+const allBtns = new Set(section.map((value)=>{
+    return value.company;
+}))
+
+const fnlBtn =  Array.from(allBtns);
+
+
+
     if(isLoading){
         return <Loading/> 
     }
@@ -42,7 +57,9 @@ const App = () => {
     }
     return (
         <div>
-          <Main/>
+            <h1> Experience</h1>
+            <Buttons fnlBtn={fnlBtn} />
+          <Main section={section}/>
         </div>
     )
 }
