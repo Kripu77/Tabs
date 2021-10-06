@@ -2,7 +2,8 @@ import React,{useState, useEffect} from 'react'
 import Loading from "./components/Loading"
 import Error from './components/Error';
 import Buttons from './components/Buttons';
-
+import Main from './components/Main';
+import "./CSS/index.css"
 const url = "https://course-api.com/react-tabs-project";
 
 const App = () => {
@@ -49,14 +50,19 @@ console.log(userData)
 const{id, order, title, dates, duties, company  } = userData[index]; //using the index to display only specifc section
 
     return (
-        <main>
-            <Buttons data={userData} setDis={setIndex}/>
+        <main className="section">
+        <div className="title">
+            <h2> My Experience</h2>
+<div className="underline"></div>
+        </div>
+        <div className="jobs-center">
+            <div className="btn-container">
+            <Buttons  data={userData} setDis={setIndex}/>
+            </div>
+            </div>
         <div>
-            <h1> {company}</h1>
-            <h3>{title}</h3>
-            <p>{dates}</p>
-            <p>{duties}</p>
-            <p>{order}</p>
+            
+           <Main {...userData[index]}/>
         </div>
         </main>
     )
