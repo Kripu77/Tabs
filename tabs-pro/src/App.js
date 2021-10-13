@@ -43,7 +43,7 @@ if(isLoading){
 if(isError){
     return <Error/>
 }
-//once the data fetchin is completed we then destructre the value based on the index,
+//once the data fetching is completed we then destructre the value based on the index,
 //if we do desctruring index based value above loading component than react will complaint and throw error to the window
 
 console.log(userData)
